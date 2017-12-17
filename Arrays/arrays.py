@@ -63,6 +63,19 @@ class Array(object):
             self.arr_values[i] = self.arr_values[i+1]
         self.arr_size -= 1
 
+    def remove(self, item):
+        ''' Removes the value item from the array by deleting all occurrence of item in the array. '''
+        for i in range(self.size()-1,-1,-1):
+            if self.arr_values[i] == item:
+                self.delete(i)
+
+    def find(self, item):
+        ''' Finds the first occurence of item in the array. '''
+        for index in range(self.size()):
+            if self.arr_values[index] == item:
+                return index
+        return -1
+
     def __str__(self):
         ''' return an string representing the array. '''
         if self.size() == 0: return '[]'
@@ -82,7 +95,7 @@ A.pop()
 print('Size: ', A.size(), ' Capacity: ', A.capacity(), 'Is Empty? ', A.is_empty())
 print(A,'\n')
 
-A.push(12)
+A.push(11)
 print('Size: ', A.size(), ' Capacity: ', A.capacity(), 'Is Empty? ', A.is_empty())
 print(A,'\n')
 
@@ -107,6 +120,13 @@ print(A,'\n')
 A.delete(4)
 print('Deleted item at index 4!')
 print('Size: ', A.size(), ' Capacity: ', A.capacity(), 'Is Empty? ', A.is_empty())
+print(A,'\n')
+
+print('Find the first element with value 11: ', A.find(11))
+print(A,'\n')
+
+A.remove(11)
+print('Removed all element with value 11:')
 print(A,'\n')
 
 
